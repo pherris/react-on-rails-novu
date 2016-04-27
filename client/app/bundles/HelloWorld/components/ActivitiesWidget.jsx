@@ -17,13 +17,37 @@ export default class ActivitiesWidget extends React.Component {
     super(props, context);
   }
 
+  round(number) {
+    return Math.round(number * 100) / 100;
+  }
+
   render() {
-    const { $$activities } = this.props;
+    const activities = this.props.$$activities.toJS();
+    const activityList = [];
+    _.map(activities, (activity) => {
+      return Object.assign({
+        athlete_name: _.isNil(activity.athlete) ? '' : `${activity.athlete.firstname} ${activity.athlete.lastname}`,
+        distance: (activity.distance > 0 ? this.round(activity.distance / 1000) : 0) + ' km',
+        time: this.round(activity.elapsed_time / 60 /60) + ' hr',
+        link: `https://www.strava.com/activities/${activity.id}`
+      }, _.pick(activity, ['max_speed', 'name', 'type']));
+    }).forEach((activity, index) => {
+      activityList.push(<div className='activity' key={index}>
+        <h4>
+          {activity.athlete_name}
+        </h4>
+        {activity.name}, {activity.distance}
+      </div>);
+    });
+
     return (
       <div className="container">
         <h3>
-          Activities: {$$activities.size}
+          Activities: {activities.size}
         </h3>
+        <div>
+          {activityList}
+        </div>
       </div>
     );
   }
