@@ -10,7 +10,7 @@ export default class ActivitiesWidget extends React.Component {
     // If you have lots of data or action properties, you should consider grouping them by
     // passing two properties: "data" and "actions".
     // updateName: PropTypes.func.isRequired,
-    activities: PropTypes.array.isRequired,
+    $$activities: PropTypes.object.isRequired,
   };
 
   constructor(props, context) {
@@ -18,11 +18,11 @@ export default class ActivitiesWidget extends React.Component {
   }
 
   render() {
-    const { activities } = this.props;
+    const { $$activities } = this.props;
     return (
       <div className="container">
         <h3>
-          Activities: {activities.length}
+          Activities: {$$activities.size}
         </h3>
       </div>
     );

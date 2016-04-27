@@ -7,18 +7,21 @@ import Immutable from 'immutable';
 import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
 
 function select(state) {
+  console.log('in select', state);
   // Which part of the Redux global state does our component want to receive as props?
   // Note the use of `$$` to prefix the property name because the value is of type Immutable.js
-  return { $$helloWorldStore: state.$$helloWorldStore };
+  // return { $$helloWorldStore: state.$$helloWorldStore };
+  return { state: state };
 }
 
 // Simple example of a React "smart" component
 const HelloWorld = (props) => {
-  const { dispatch, $$helloWorldStore } = props;
+  const { dispatch, state } = props;
   const actions = bindActionCreators(helloWorldActionCreators, dispatch);
   const { updateName } = actions;
-  const name = $$helloWorldStore.get('name');
-  const activities = $$helloWorldStore.get('activities');
+
+  const name = state.$$person.get('name');
+  const $$activities = state.$$activities;
 
   //let's fetch some stuff from the server
   actions.fetchActivities();
@@ -29,6 +32,7 @@ const HelloWorld = (props) => {
   return (
     <div>
       <HelloWorldWidget {...{ updateName, name }} />
+      <ActivitiesWidget {... { $$activities }} />
     </div>
   );
 };
@@ -40,7 +44,7 @@ HelloWorld.propTypes = {
   // We prefix all property and variable names pointing to Immutable.js objects with '$$'.
   // This allows us to immediately know we don't call $$helloWorldStore['someProperty'], but
   // instead use the Immutable.js `get` API for Immutable.Map
-  $$helloWorldStore: PropTypes.instanceOf(Immutable.Map).isRequired,
+  state: PropTypes.object.isRequired,
 };
 
 // Don't forget to actually use connect!

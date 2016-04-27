@@ -5,5 +5,6 @@ import { helloWorldReducer } from './helloWorldReducer';
 import { activitiesReducer } from './helloWorldReducer';
 
 export default {
-  $$helloWorldStore: helloWorldReducer,
+  $$person: helloWorldReducer,
+  $$activities: activitiesReducer
 };

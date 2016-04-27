@@ -14,22 +14,20 @@ import loggerMiddleware from 'lib/middlewares/loggerMiddleware';
 import * as reducers from '../reducers';
 // import { initialStates } from '../reducers';
 
-export const $$initialState = Immutable.fromJS({
-  name: name, // this is the default state that would be used if one were not passed into the store
-  activities: []
-});
+// Redux expects to initialize the store using an Object, not an Immutable.Map
+export const initialState = {
+  $$person: Immutable.Map({ name: name }), // this is the default state that would be used if one were not passed into the store
+  $$activities: Immutable.fromJS([])
+};
 
 export default props => {
   // This is how we get initial props Rails into redux.
   const { name } = props.name;
   // const { $$helloWorldState } = initialStates;
 
-  // Redux expects to initialize the store using an Object, not an Immutable.Map
-  const initialState = {
-    $$helloWorldStore: $$initialState.merge({
-      name,
-    }),
-  };
+  //add the rails properties
+  const initialStateWithRails = initialState;
+  initialStateWithRails.$$person = Immutable.Map({ name: name });
 
   const reducer = combineReducers(reducers.default);
   const composedStore = compose(
@@ -37,7 +35,7 @@ export default props => {
     // applyMiddleware(thunkMiddleware, loggerMiddleware)
   );
   const storeCreator = composedStore(createStore);
-  const store = storeCreator(reducer, initialState);
+  const store = storeCreator(reducer, initialStateWithRails);
 
   return store;
 };
