@@ -7,7 +7,6 @@ import Immutable from 'immutable';
 import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
 
 function select(state) {
-  console.log('in select', state);
   // Which part of the Redux global state does our component want to receive as props?
   // Note the use of `$$` to prefix the property name because the value is of type Immutable.js
   // return { $$helloWorldStore: state.$$helloWorldStore };
@@ -24,8 +23,10 @@ const HelloWorld = (props) => {
   const $$activities = state.$$activities;
 
   //let's fetch some stuff from the server
-  actions.fetchActivities();
-  setTimeout(() => { actions.fetchedActivities() }, 10);
+  if (!$$activities.size) {
+    actions.fetchActivities();
+    setTimeout(() => { actions.fetchedActivities() }, 10);
+  }
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
