@@ -25,7 +25,7 @@ const HelloWorld = (props) => {
   //let's fetch some stuff from the server
   if (!$$activities.size) {
     actions.fetchActivities();
-    setTimeout(() => { actions.fetchedActivities() }, 10);
+    // setTimeout(() => { actions.fetchedActivities() }, 10);
   }
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
