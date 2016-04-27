@@ -1,0 +1,43 @@
+import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
+import Immutable from 'immutable';
+
+// See
+// https://github.com/gaearon/redux-thunk and http://redux.js.org/docs/advanced/AsyncActions.html
+// This is not actually used for this simple example, but you'd probably want to use this
+// once your app has asynchronous actions.
+import thunkMiddleware from 'redux-thunk';
+
+// This provides an example of logging redux actions to the console.
+// You'd want to disable this for production.
+import loggerMiddleware from 'lib/middlewares/loggerMiddleware';
+
+import * as reducers from '../reducers';
+// import { initialStates } from '../reducers';
+
+export const $$initialState = Immutable.fromJS({
+  name: name, // this is the default state that would be used if one were not passed into the store
+  activities: []
+});
+
+export default props => {
+  // This is how we get initial props Rails into redux.
+  const { name } = props.name;
+  // const { $$helloWorldState } = initialStates;
+
+  // Redux expects to initialize the store using an Object, not an Immutable.Map
+  const initialState = {
+    $$helloWorldStore: $$initialState.merge({
+      name,
+    }),
+  };
+
+  const reducer = combineReducers(reducers.default);
+  const composedStore = compose(
+    applyMiddleware(thunkMiddleware)
+    // applyMiddleware(thunkMiddleware, loggerMiddleware)
+  );
+  const storeCreator = composedStore(createStore);
+  const store = storeCreator(reducer, initialState);
+
+  return store;
+};
