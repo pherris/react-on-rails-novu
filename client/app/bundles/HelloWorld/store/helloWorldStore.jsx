@@ -12,27 +12,30 @@ import thunkMiddleware from 'redux-thunk';
 import loggerMiddleware from 'lib/middlewares/loggerMiddleware';
 
 import * as reducers from '../reducers';
+
 // import { initialStates } from '../reducers';
 
 // Redux expects to initialize the store using an Object, not an Immutable.Map
 export const initialState = {
-  $$person: Immutable.Map({ name: name }), // this is the default state that would be used if one were not passed into the store
-  $$activities: Immutable.fromJS([])
+  $$person: Immutable.fromJS({ name }), // this is the default state that would be used if one were
+  // not passed into the store
+
+  $$activities: Immutable.fromJS([]),
 };
 
+// This is how we get initial props Rails into redux.
 export default props => {
-  // This is how we get initial props Rails into redux.
   const { name } = props.name;
+
   // const { $$helloWorldState } = initialStates;
 
-  //add the rails properties
+  // add the rails properties
   const initialStateWithRails = initialState;
-  initialStateWithRails.$$person = Immutable.Map({ name: name });
+  initialStateWithRails.$$person = Immutable.fromJS({ name });
 
   const reducer = combineReducers(reducers.default);
   const composedStore = compose(
-    applyMiddleware(thunkMiddleware)
-    // applyMiddleware(thunkMiddleware, loggerMiddleware)
+    applyMiddleware(thunkMiddleware, loggerMiddleware)
   );
   const storeCreator = composedStore(createStore);
   const store = storeCreator(reducer, initialStateWithRails);

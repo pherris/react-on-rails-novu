@@ -1,15 +1,22 @@
 import actionTypes from '../constants/helloWorldConstants';
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
 
-export function updateName(name) {
+function fetchedActivities(activities) {
   return {
-    type: actionTypes.HELLO_WORLD_NAME_UPDATE,
-    name
+    type: actionTypes.FETCH_ACTIVITIES_SUCCESS,
+    activities,
   };
 }
 
-export function fetchActivities() {
-  return function(dispatch) {
+function updateName(name) {
+  return {
+    type: actionTypes.HELLO_WORLD_NAME_UPDATE,
+    name,
+  };
+}
+
+function fetchActivities() {
+  return function fetchActivitiesPromise(dispatch) {
     return fetch(`http://localhost:3000/activity.json`)
       .then(response => response.json())
       .then(json =>
@@ -19,19 +26,13 @@ export function fetchActivities() {
 
         dispatch(fetchedActivities(json))
       );
-  }
-}
-
-export function fetchedActivities(activities) {
-  return {
-    type: actionTypes.FETCH_ACTIVITIES_SUCCESS,
-    activities: activities
   };
 }
 
-export function fetchedActivitiesFailure() {
+function fetchedActivitiesFailure() {
   return {
     type: actionTypes.FETCH_ACTIVITIES_FAILURE,
-    activities: activities
   };
 }
+
+export { updateName, fetchActivities, fetchedActivities, fetchedActivitiesFailure };
