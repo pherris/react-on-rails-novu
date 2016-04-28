@@ -3,7 +3,7 @@
 
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import './scss/Activities.scss';
+import css from './scss/Activities.scss';
 
 // Simple example of a React "dumb" component
 export default class ActivitiesWidget extends React.Component {
@@ -26,7 +26,7 @@ export default class ActivitiesWidget extends React.Component {
     const activities = this.props.$$activities.toJS();
     const activityList = [];
     _.map(activities, activity => {
-      Object.assign({
+      return Object.assign({
         athlete_name: _.isNil(activity.athlete) ? '' :
           `${activity.athlete.firstname} ${activity.athlete.lastname}`,
         distance: (activity.distance > 0 ? this.round(activity.distance / 1000) : 0) + ' km',
@@ -35,17 +35,17 @@ export default class ActivitiesWidget extends React.Component {
       }, _.pick(activity, ['max_speed', 'name', 'type']));
     }).forEach((activity, index) => {
       activityList.push(<div className="activity" key={index}>
-        <h4 className="header">
-          {activity.athlete_name}
+        <h4 className={css.header}>
+          {activity.athlete_name}!
         </h4>
         {activity.name}, {activity.distance}
       </div>);
     });
 
     return (
-      <div className="container activity">
+      <div className={ `container ${css.activity}` }>
         <h3>
-          Activities: {activities.size}
+          Activities: {activities.length}
         </h3>
         <div>
           {activityList}

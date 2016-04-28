@@ -15,7 +15,8 @@
     "test:debug": "npm run test -- --debug-brk",
     "lint": "npm run eslint && npm run jscs",
     "eslint": "eslint --ext .js,.jsx .",
-    "jscs": "jscs --verbose ."
+    "jscs": "jscs --verbose .",
+    "hot-assets": "babel-node server.rails.hot.js"
   },
   "dependencies": {
     "autoprefixer": "^6.3.5",
