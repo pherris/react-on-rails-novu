@@ -13,7 +13,7 @@ module.exports = {
   entry: [
     'react',
     'react-dom/server',
-    './app/bundles/comments/startup/serverGlobals',
+    './app/bundles/HelloWorld/startup/serverGlobals',
   ],
   output: {
     filename: 'server-bundle.js',
@@ -22,7 +22,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      libs: path.join(process.cwd(), 'app', 'libs'),
+      lib: path.join(process.cwd(), 'app', 'lib'),
     },
   },
   plugins: [
