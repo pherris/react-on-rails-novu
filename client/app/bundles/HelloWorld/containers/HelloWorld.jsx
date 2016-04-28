@@ -3,14 +3,13 @@ import HelloWorldWidget from '../components/HelloWorldWidget';
 import ActivitiesWidget from '../components/ActivitiesWidget';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Immutable from 'immutable';
 import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
 
 function select(state) {
   // Which part of the Redux global state does our component want to receive as props?
   // Note the use of `$$` to prefix the property name because the value is of type Immutable.js
   // return { $$helloWorldStore: state.$$helloWorldStore };
-  return { state: state };
+  return { state };
 }
 
 // Simple example of a React "smart" component
@@ -22,11 +21,11 @@ const HelloWorld = (props) => {
   const name = state.$$person.get('name');
   const $$activities = state.$$activities;
 
-  //let's fetch some stuff from the server
+  // let's fetch some stuff from the server
   if (!$$activities.size) {
     actions.fetchActivities();
-    // setTimeout(() => { actions.fetchedActivities() }, 10);
   }
+
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />

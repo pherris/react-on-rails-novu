@@ -1,11 +1,9 @@
 // DO NOT REQUIRE jQuery or jQuery-ujs in this file!
 // DO NOT REQUIRE TREE!
 
-// CRITICAL that vendor-bundle must be BEFORE bootstrap-sprockets and turbolinks
-// since it is exposing jQuery and jQuery-ujs
-
-//= require vendor-bundle
-//= require app-bundle
+// All webpack assets in development will be loaded via webpack dev server
+// It's important to include them in layout view above this asset
+// b/c it exposes jQuery for turbolinks and another non-webpack JS (if any)
 
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.

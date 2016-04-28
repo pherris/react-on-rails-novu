@@ -4,7 +4,8 @@
 import { helloWorldReducer } from './helloWorldReducer';
 import { activitiesReducer } from './helloWorldReducer';
 
+// maps the reducers onto the specific part of the atom/store that they are responsible for
 export default {
   $$person: helloWorldReducer,
-  $$activities: activitiesReducer
+  $$activities: activitiesReducer,
 };

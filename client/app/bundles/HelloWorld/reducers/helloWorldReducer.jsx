@@ -1,8 +1,8 @@
 import actionTypes from '../constants/helloWorldConstants';
 import Immutable from 'immutable';
 
-//to me it makes sense to have the initial state in the store as opposed to in
-//with one (of possibly many) reducers, but the link-back to the store here is a bit odd.
+// to me it makes sense to have the initial state in the store as opposed to in
+// with one (of possibly many) reducers, but the link-back to the store here is a bit odd.
 import $$initialState from '../store/helloWorldStore';
 
 export function activitiesReducer($$state = [], action) {

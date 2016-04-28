@@ -3,6 +3,7 @@
 
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
+import './scss/Activities.scss';
 
 // Simple example of a React "dumb" component
 export default class ActivitiesWidget extends React.Component {
@@ -24,16 +25,17 @@ export default class ActivitiesWidget extends React.Component {
   render() {
     const activities = this.props.$$activities.toJS();
     const activityList = [];
-    _.map(activities, (activity) => {
-      return Object.assign({
-        athlete_name: _.isNil(activity.athlete) ? '' : `${activity.athlete.firstname} ${activity.athlete.lastname}`,
+    _.map(activities, activity => {
+      Object.assign({
+        athlete_name: _.isNil(activity.athlete) ? '' :
+          `${activity.athlete.firstname} ${activity.athlete.lastname}`,
         distance: (activity.distance > 0 ? this.round(activity.distance / 1000) : 0) + ' km',
-        time: this.round(activity.elapsed_time / 60 /60) + ' hr',
-        link: `https://www.strava.com/activities/${activity.id}`
+        time: this.round(activity.elapsed_time / 60 / 60) + ' hr',
+        link: `https://www.strava.com/activities/${activity.id}`,
       }, _.pick(activity, ['max_speed', 'name', 'type']));
     }).forEach((activity, index) => {
-      activityList.push(<div className='activity' key={index}>
-        <h4>
+      activityList.push(<div className="activity" key={index}>
+        <h4 className="header">
           {activity.athlete_name}
         </h4>
         {activity.name}, {activity.distance}
@@ -41,7 +43,7 @@ export default class ActivitiesWidget extends React.Component {
     });
 
     return (
-      <div className="container">
+      <div className="container activity">
         <h3>
           Activities: {activities.size}
         </h3>
