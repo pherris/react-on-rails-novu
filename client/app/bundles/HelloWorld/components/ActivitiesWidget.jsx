@@ -35,9 +35,9 @@ export default class ActivitiesWidget extends React.Component {
       }, _.pick(activity, ['max_speed', 'name', 'type']));
     }).forEach((activity, index) => {
       activityList.push(<div className="activity" key={index}>
-        <h4 className={css.header}>
-          {activity.athlete_name}!
-        </h4>
+        <h5 className={css.header}>
+          - {activity.athlete_name}
+        </h5>
         {activity.name}, {activity.distance}
       </div>);
     });
