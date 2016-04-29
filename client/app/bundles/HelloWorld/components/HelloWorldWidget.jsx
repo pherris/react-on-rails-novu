@@ -1,6 +1,3 @@
-// HelloWorldWidget is an arbitrary name for any "dumb" component. We do not recommend suffixing
-// all your dump component names with Widget.
-
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 
@@ -10,7 +7,7 @@ export default class HelloWorldWidget extends React.Component {
     // If you have lots of data or action properties, you should consider grouping them by
     // passing two properties: "data" and "actions".
     updateName: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
+    full_name: PropTypes.string.isRequired,
   };
 
   constructor(props, context) {
@@ -24,16 +21,16 @@ export default class HelloWorldWidget extends React.Component {
 
   // React will automatically provide us with the event `e`
   handleChange(e) {
-    const name = e.target.value;
-    this.props.updateName(name);
+    const full_name = e.target.value;
+    this.props.updateName(full_name);
   }
 
   render() {
-    const { name } = this.props;
+    const { full_name } = this.props;
     return (
       <div className="container">
         <h3>
-          My name is {name}!
+          My name is {full_name}!
         </h3>
         <hr />
         <form className="form-horizontal">
@@ -42,7 +39,7 @@ export default class HelloWorldWidget extends React.Component {
           </label>
           <input
             type="text"
-            value={name}
+            value={full_name}
             onChange={this.handleChange}
           />
         </form>

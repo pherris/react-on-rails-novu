@@ -13,7 +13,7 @@ module.exports = {
   entry: [
     'react',
     'react-dom/server',
-    './app/bundles/HelloWorld/startup/serverGlobals',
+    './app/bundles/HelloWorld/startup/serverRegistration',
   ],
   output: {
     filename: 'server-bundle.js',
