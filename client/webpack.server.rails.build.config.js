@@ -11,9 +11,9 @@ module.exports = {
   // the project dir
   context: __dirname,
   entry: [
-    'react',
-    'react-dom/server',
-    './app/bundles/HelloWorld/startup/serverGlobals',
+    // 'bootstrap-loader',
+    // 'babel-polyfill',
+    './app/bundles/HelloWorld/startup/serverRegistration',
   ],
   output: {
     filename: 'server-bundle.js',
@@ -49,13 +49,14 @@ module.exports = {
           'sass-resources',
         ],
       },
-
-      // React is necessary for the client rendering:
-      { test: require.resolve('react'), loader: 'expose?React' },
-      { test: require.resolve('react-dom/server'), loader: 'expose?ReactDOMServer' },
+      {
+        test: /\.json$/,
+        loader: "json-loader"
+      }
     ],
   },
 
-  sassResources: ['./app/assets/styles/app-variables.scss'],
+  // target: 'node', //DO NOT USE (weird, seems to mix up async libraries b/c they think they are running in a browser env.)
 
+  sassResources: ['./app/assets/styles/app-variables.scss'],
 };

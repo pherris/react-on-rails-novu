@@ -1,15 +1,18 @@
 ---
 # Output debugging info
-# loglevel: debug
+loglevel: debug
 
 # Major version of Bootstrap: 3 or 4
-bootstrapVersion: 3
+bootstrapVersion: 4
+
+# If Bootstrap version 4 is used - turn on/off flexbox model
+useFlexbox: true
 
 # Webpack loaders, order matters
 styleLoaders:
-  - style
-  - css
-  - sass
+ - style
+ - css
+ - sass
 
 # Extract styles to stand-alone css file
 # Different settings for different environments can be used,
@@ -32,7 +35,7 @@ extractStyles: false
 # For example, _variables.scss contains:
 # $input-color: $gray !default;
 # This means you can define $input-color before we load _variables.scss
-preBootstrapCustomizations: ./app/assets/styles/bootstrap-pre-customizations.scss
+# preBootstrapCustomizations: ./app/styles/bootstrap/pre-customizations.scss
 
 # This gets loaded after bootstrap/variables is loaded and before bootstrap is loaded.
 # A good example of this is when you want to override a bootstrap variable to be based
@@ -46,13 +49,12 @@ preBootstrapCustomizations: ./app/assets/styles/bootstrap-pre-customizations.scs
 # this in bootstrapCustomizations to make the input height 10% bigger than the default calculation.
 # Thus you can leverage the default calculations.
 # $input-height: $input-height * 1.10;
-# bootstrapCustomizations: ./app/assets/styles/bootstrap-customizations.scss
+# bootstrapCustomizations: ./app/styles/bootstrap/customizations.scss
 
 # Import your custom styles here. You have access to all the bootstrap variables. If you require
 # your sass files separately, you will not have access to the bootstrap variables, mixins, clases, etc.
 # Usually this endpoint-file contains list of @imports of your application styles.
-# But since we use CSS Modules, we don't need it - every module gets imported from JS component.
-# appStyles: ./app/styles/app.scss
+#appStyles: ./app/styles/app.scss
 
 ### Bootstrap styles
 styles:
@@ -63,11 +65,11 @@ styles:
   # Reset and dependencies
   normalize: true
   print: true
-  glyphicons: true
 
   # Core CSS
-  scaffolding: true
+  reboot: true
   type: true
+  images: true
   code: true
   grid: true
   tables: true
@@ -75,49 +77,47 @@ styles:
   buttons: true
 
   # Components
-  component-animations: true
-  dropdowns: true
-  button-groups: true
-  input-groups: true
-  navs: true
+  animation: true
+  dropdown: true
+  button-group: true
+  input-group: true
+  custom-forms: true
+  nav: true
   navbar: true
-  breadcrumbs: true
+  card: true
+  breadcrumb: true
   pagination: true
   pager: true
   labels: true
-  badges: true
   jumbotron: true
-  thumbnails: true
-  alerts: true
-  progress-bars: true
+  alert: true
+  progress: true
   media: true
   list-group: true
-  panels: true
-  wells: true
   responsive-embed: true
   close: true
 
   # Components w/ JavaScript
-  modals: true
+  modal: true
   tooltip: true
-  popovers: true
+  popover: true
   carousel: true
 
   # Utility classes
   utilities: true
-  responsive-utilities: true
+  utilities-spacing: true
+  utilities-responsive: true
 
 ### Bootstrap scripts
 scripts:
-  transition: true
   alert: true
   button: true
   carousel: true
   collapse: true
   dropdown: true
   modal: true
-  tooltip: true
   popover: true
   scrollspy: true
   tab: true
-  affix: true
+  tooltip: true
+  util: true

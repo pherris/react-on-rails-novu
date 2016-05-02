@@ -18,12 +18,13 @@ const HelloWorld = (props) => {
   const actions = bindActionCreators(helloWorldActionCreators, dispatch);
   const { updateName } = actions;
 
-  const name = state.$$person.get('name');
+  const full_name = state.$$person.get('full_name');
   const $$activities = state.$$activities;
 
   // let's fetch some stuff from the server
+  console.log('client- helloworld.jsx');
   if (!$$activities.size) {
-    actions.fetchActivities();
+    // actions.fetchActivities();
   }
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
@@ -31,7 +32,7 @@ const HelloWorld = (props) => {
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
     <div>
-      <HelloWorldWidget {...{ updateName, name }} />
+      <HelloWorldWidget {...{ updateName, full_name }} />
       <ActivitiesWidget {... { $$activities }} />
     </div>
   );
