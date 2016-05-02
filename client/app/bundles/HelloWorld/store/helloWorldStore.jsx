@@ -9,7 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 
 // This provides an example of logging redux actions to the console.
 // You'd want to disable this for production.
-import loggerMiddleware from 'lib/middlewares/loggerMiddleware';
+import loggerMiddleware from 'libs/middlewares/loggerMiddleware';
 
 import * as reducers from '../reducers';
 
@@ -17,6 +17,7 @@ import * as reducers from '../reducers';
 // Immutable.Map, so we'll wrap immutable objects in a simple object.
 // This is the default state that would be used if nothing is sent
 // from the server.
+let full_name = '';
 export const initialState = {
   $$person: Immutable.fromJS({ full_name }),
   $$activities: Immutable.fromJS([]),

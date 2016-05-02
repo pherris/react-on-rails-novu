@@ -11,8 +11,8 @@ module.exports = {
   // the project dir
   context: __dirname,
   entry: [
-    'react',
-    'react-dom/server',
+    // 'bootstrap-loader',
+    // 'babel-polyfill',
     './app/bundles/HelloWorld/startup/serverRegistration',
   ],
   output: {
@@ -22,7 +22,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      lib: path.join(process.cwd(), 'app', 'lib'),
+      libs: path.join(process.cwd(), 'app', 'lib'),
     },
   },
   plugins: [
@@ -49,13 +49,16 @@ module.exports = {
           'sass-resources',
         ],
       },
-
-      // React is necessary for the client rendering:
-      { test: require.resolve('react'), loader: 'expose?React' },
-      { test: require.resolve('react-dom/server'), loader: 'expose?ReactDOMServer' },
+      {
+        test: /\.json$/,
+        loader: "json-loader"
+      }
     ],
   },
 
-  sassResources: ['./app/assets/styles/app-variables.scss'],
+  // externals: ['window'],
 
+  // target: 'node',
+
+  sassResources: ['./app/assets/styles/app-variables.scss'],
 };
