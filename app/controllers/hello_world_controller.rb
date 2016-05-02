@@ -1,3 +1,5 @@
+require "benchmark"
+
 class HelloWorldController < ApplicationController
   #TODO, DRY up strava code
   include Strava
@@ -6,7 +8,11 @@ class HelloWorldController < ApplicationController
 
   def index
     @hello_world_props = { full_name: "Stranger" }
-    @strava_activities = @client.list_friends_activities
+    time = Benchmark.measure do
+      @strava_activities = @client.list_friends_activities
+    end
+
+    @statistics = { strava_api_time: time.real }
   end
 
   def configure_strava

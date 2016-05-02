@@ -11,16 +11,12 @@ module.exports = {
   // the project dir
   context: __dirname,
   entry: [
-<<<<<<< HEAD
     'tether',
-    'react',
+    'react', //todo, may have to remove these...
     'react-dom/server',
-    './app/bundles/HelloWorld/startup/serverGlobals',
-=======
     // 'bootstrap-loader',
     // 'babel-polyfill',
     './app/bundles/HelloWorld/startup/serverRegistration',
->>>>>>> ba3b68baacf7d4b5ca540720fbe05d0e78430e3a
   ],
   output: {
     filename: 'server-bundle.js',

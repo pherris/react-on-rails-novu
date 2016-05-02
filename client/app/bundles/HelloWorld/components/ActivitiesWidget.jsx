@@ -12,6 +12,7 @@ export default class ActivitiesWidget extends React.Component {
     // passing two properties: "data" and "actions".
     // updateName: PropTypes.func.isRequired,
     $$activities: PropTypes.object.isRequired,
+    $$statistics: PropTypes.object.isRequired,
   };
 
   constructor(props, context) {
@@ -24,6 +25,7 @@ export default class ActivitiesWidget extends React.Component {
 
   render() {
     const activities = this.props.$$activities.toJS();
+    const statistics = this.props.$$statistics.toJS();
     const activityList = [];
     _.map(activities, activity => {
       return Object.assign({
@@ -47,6 +49,7 @@ export default class ActivitiesWidget extends React.Component {
         <h3>
           Activities: {activities.length}
         </h3>
+        <h5>api call time: {statistics.strava_api_time}</h5>
         <div>
           {activityList}
         </div>

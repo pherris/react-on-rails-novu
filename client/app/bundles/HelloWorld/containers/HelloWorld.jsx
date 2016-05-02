@@ -20,12 +20,7 @@ const HelloWorld = (props) => {
 
   const full_name = state.$$person.get('full_name');
   const $$activities = state.$$activities;
-
-  // let's fetch some stuff from the server
-  console.log('client- helloworld.jsx');
-  if (!$$activities.size) {
-    // actions.fetchActivities();
-  }
+  const $$statistics = state.$$statistics;
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
@@ -33,7 +28,7 @@ const HelloWorld = (props) => {
   return (
     <div>
       <HelloWorldWidget {...{ updateName, full_name }} />
-      <ActivitiesWidget {... { $$activities }} />
+      <ActivitiesWidget {... { $$activities, $$statistics }} />
     </div>
   );
 };

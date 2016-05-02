@@ -8,4 +8,5 @@ import { activitiesReducer } from './helloWorldReducer';
 export default {
   $$person: helloWorldReducer,
   $$activities: activitiesReducer,
+  $$statistics: (state = {}) => state,
 };

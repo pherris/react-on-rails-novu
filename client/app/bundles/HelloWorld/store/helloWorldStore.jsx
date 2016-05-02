@@ -21,16 +21,18 @@ let full_name = '';
 export const initialState = {
   $$person: Immutable.fromJS({ full_name }),
   $$activities: Immutable.fromJS([]),
+  $$statistics: Immutable.fromJS({ strava_api_time: 0 }),
 };
 
 // This is how we get initial props Rails into redux.
 export default props => {
-  const { person, activities } = props;
+  const { person, activities, statistics } = props;
 
   // add the rails properties
   const initialStateWithRails = initialState;
   initialStateWithRails.$$person = Immutable.fromJS(person);
   initialStateWithRails.$$activities = Immutable.fromJS(activities ? activities : []);
+  initialStateWithRails.$$statistics = Immutable.fromJS(statistics ? statistics : { strava_api_time: 0 });
 
   // connect reducers to the state atom
   const reducer = combineReducers(reducers.default);
