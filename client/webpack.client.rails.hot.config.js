@@ -10,8 +10,6 @@ const config = require('./webpack.client.base.config');
 
 const hotRailsPort = process.env.HOT_RAILS_PORT || 3500;
 
-config.target = 'node';
-
 config.entry.app.push(
   'webpack-dev-server/client?http://localhost:' + hotRailsPort,
   'webpack/hot/only-dev-server'
@@ -23,6 +21,13 @@ config.entry.vendor.push(
   'jquery-ujs',
   'bootstrap-loader'
 );
+
+config.resolve = {
+  extensions: ['', '.js', '.jsx'],
+  alias: {
+    lib: path.join(process.cwd(), 'app', 'lib'),
+  },
+};
 
 config.output = {
   filename: '[name]-bundle.js',

@@ -22,7 +22,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      libs: path.join(process.cwd(), 'app', 'lib'),
+      lib: path.join(process.cwd(), 'app', 'lib'),
     },
   },
   plugins: [
@@ -56,9 +56,7 @@ module.exports = {
     ],
   },
 
-  // externals: ['window'],
-
-  // target: 'node',
+  // target: 'node', //DO NOT USE (weird, seems to mix up async libraries b/c they think they are running in a browser env.)
 
   sassResources: ['./app/assets/styles/app-variables.scss'],
 };

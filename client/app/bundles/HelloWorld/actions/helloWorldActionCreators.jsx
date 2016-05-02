@@ -3,7 +3,7 @@ import actionTypes from '../constants/helloWorldConstants';
 // import { polyfill } from 'es6-promise';
 // polyfill();
 
-import fetch from 'isomorphic-fetch';
+// import fetch from 'isomorphic-fetch';
 
 function fetchedActivities(activities) {
   return {
@@ -19,26 +19,26 @@ function updateName(name) {
   };
 }
 
-function fetchActivities() {
-  console.log('client- make request to http://localhost:3000/activity.json');
-  return function fetchActivitiesPromise(dispatch) {
-    console.log('client- execute function....');
-    return fetch('http://localhost:3000/activity.json')
-      .then(response => {
-        console.log('client- in first then');
-        return response.json()
-      })
-      .then(json => {
-        console.log('client- returning ok!');
-        // We can dispatch many times!
-        // Here, we update the app state with the results of the API call.
-
-        dispatch(fetchedActivities(json))
-      }).catch(reject => {
-        console.log('client- FAILURE');
-      });
-  };
-}
+// function fetchActivities() {
+//   console.log('client- make request to http://localhost:3000/activity.json');
+//   return function fetchActivitiesPromise(dispatch) {
+//     console.log('client- execute function....');
+//     return fetch('http://localhost:3000/activity.json')
+//       .then(response => {
+//         console.log('client- in first then');
+//         return response.json()
+//       })
+//       .then(json => {
+//         console.log('client- returning ok!');
+//         // We can dispatch many times!
+//         // Here, we update the app state with the results of the API call.
+//
+//         dispatch(fetchedActivities(json))
+//       }).catch(reject => {
+//         console.log('client- FAILURE');
+//       });
+//   };
+// }
 
 function fetchedActivitiesFailure() {
   return {
@@ -46,4 +46,4 @@ function fetchedActivitiesFailure() {
   };
 }
 
-export { updateName, fetchActivities, fetchedActivities, fetchedActivitiesFailure };
+export { updateName, fetchedActivities, fetchedActivitiesFailure };

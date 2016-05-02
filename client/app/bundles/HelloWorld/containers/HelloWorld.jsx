@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-// import HelloWorldWidget from '../components/HelloWorldWidget';
-// import ActivitiesWidget from '../components/ActivitiesWidget';
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
+import HelloWorldWidget from '../components/HelloWorldWidget';
+import ActivitiesWidget from '../components/ActivitiesWidget';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
 
 function select(state) {
   // Which part of the Redux global state does our component want to receive as props?
@@ -15,7 +15,7 @@ function select(state) {
 // Simple example of a React "smart" component
 const HelloWorld = (props) => {
   const { dispatch, state } = props;
-  // const actions = bindActionCreators(helloWorldActionCreators, dispatch);
+  const actions = bindActionCreators(helloWorldActionCreators, dispatch);
   const { updateName } = actions;
 
   const full_name = state.$$person.get('full_name');
@@ -24,7 +24,7 @@ const HelloWorld = (props) => {
   // let's fetch some stuff from the server
   console.log('client- helloworld.jsx');
   if (!$$activities.size) {
-    actions.fetchActivities();
+    // actions.fetchActivities();
   }
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
@@ -32,6 +32,8 @@ const HelloWorld = (props) => {
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
     <div>
+      <HelloWorldWidget {...{ updateName, full_name }} />
+      <ActivitiesWidget {... { $$activities }} />
     </div>
   );
 };
@@ -49,4 +51,4 @@ HelloWorld.propTypes = {
 // Don't forget to actually use connect!
 // Note that we don't export HelloWorld, but the redux "connected" version of it.
 // See https://github.com/reactjs/react-redux/blob/master/docs/api.md#examples
-export default HelloWorld;
+export default connect(select)(HelloWorld);

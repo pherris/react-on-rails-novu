@@ -84,5 +84,5 @@ module.exports = {
   // (so don't need to @import them explicitly)
   // https://github.com/shakacode/sass-resources-loader
   sassResources: ['./app/assets/styles/app-variables.scss'],
-  target: 'node',
+  // target: 'node',
 };

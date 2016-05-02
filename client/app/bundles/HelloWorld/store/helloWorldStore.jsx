@@ -9,7 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 
 // This provides an example of logging redux actions to the console.
 // You'd want to disable this for production.
-import loggerMiddleware from 'libs/middlewares/loggerMiddleware';
+import loggerMiddleware from 'lib/middlewares/loggerMiddleware';
 
 import * as reducers from '../reducers';
 
@@ -25,11 +25,12 @@ export const initialState = {
 
 // This is how we get initial props Rails into redux.
 export default props => {
-  const { person } = props;
+  const { person, activities } = props;
 
   // add the rails properties
   const initialStateWithRails = initialState;
   initialStateWithRails.$$person = Immutable.fromJS(person);
+  initialStateWithRails.$$activities = Immutable.fromJS(activities ? activities : []);
 
   // connect reducers to the state atom
   const reducer = combineReducers(reducers.default);
