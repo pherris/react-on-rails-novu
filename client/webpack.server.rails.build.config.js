@@ -11,6 +11,7 @@ module.exports = {
   // the project dir
   context: __dirname,
   entry: [
+    'tether',
     'react',
     'react-dom/server',
     './app/bundles/HelloWorld/startup/serverGlobals',
@@ -30,6 +31,9 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv),
       },
+    }),
+    new webpack.ProvidePlugin({
+      "window.Tether": "tether"
     }),
   ],
   module: {
