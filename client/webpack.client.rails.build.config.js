@@ -51,6 +51,10 @@ config.module.loaders.push(
       '!sass' +
       '!sass-resources'
     ),
+  },
+  {
+    test: /\.json$/,
+    loader: "json-loader"
   }
 );
 

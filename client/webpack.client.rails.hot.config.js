@@ -22,6 +22,13 @@ config.entry.vendor.push(
   'bootstrap-loader'
 );
 
+config.resolve = {
+  extensions: ['', '.js', '.jsx'],
+  alias: {
+    lib: path.join(process.cwd(), 'app', 'lib'),
+  },
+};
+
 config.output = {
   filename: '[name]-bundle.js',
   path: path.join(__dirname, 'public'),
@@ -67,6 +74,10 @@ config.module.loaders.push(
       'sass',
       'sass-resources',
     ],
+  },
+  {
+    test: /\.json$/,
+    loader: "json-loader"
   }
 );
 

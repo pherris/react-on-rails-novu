@@ -4,6 +4,7 @@ class ActivityController < ApplicationController
   before_filter :configure_strava
 
   def index
+    puts "MAKING XHR"
     render json: @client.list_friends_activities
   end
 
