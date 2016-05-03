@@ -3,7 +3,9 @@
 For the API calls to work, you need to add the environment variable:
 `export STRAVA_SECRET="..."`
 
-Add some pre-commit hooks please: `ln -s pre-commit.sh .git/hooks/pre-commit`
+Add some pre-commit hooks please: `ln -s ../../pre-commit.sh .git/hooks/pre-commit` (yes, with the
+../../ even though you are doing this from the project root - cwd when script is running is the
+hooks/ dir).
 
 # Testing
 
