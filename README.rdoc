@@ -3,6 +3,8 @@
 For the API calls to work, you need to add the environment variable:
 `export STRAVA_SECRET="..."`
 
+Add some pre-commit hooks please: `ln -s pre-commit.sh .git/hooks/pre-commit`
+
 # Testing
 
 1. `rake` runs the test suite
