@@ -25,7 +25,7 @@ export function helloWorldReducer($$state = $$initialState, action) {
 
   switch (type) {
     case actionTypes.HELLO_WORLD_NAME_UPDATE:
-      return $$state.set('full_name', name);
+      return $$state.set('fullName', name);
     default:
       return $$state;
   }

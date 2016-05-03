@@ -12,8 +12,11 @@ module.exports = {
   context: __dirname,
   entry: [
     'tether',
-    'react', //todo, may have to remove these...
+
+    // todo, may have to remove these...
+    'react',
     'react-dom/server',
+
     // 'bootstrap-loader',
     // 'babel-polyfill',
     './app/bundles/HelloWorld/startup/serverRegistration',
@@ -35,7 +38,7 @@ module.exports = {
       },
     }),
     new webpack.ProvidePlugin({
-      "window.Tether": "tether"
+      'window.Tether': 'tether',
     }),
   ],
   module: {
@@ -57,12 +60,13 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: "json-loader"
-      }
+        loader: 'json-loader',
+      },
     ],
   },
 
-  // target: 'node', //DO NOT USE (weird, seems to mix up async libraries b/c they think they are running in a browser env.)
+  // target: 'node', //DO NOT USE (weird, seems to mix up async libraries b/c they think they are
+  // running in a browser env.)
 
   sassResources: ['./app/assets/styles/app-variables.scss'],
 };

@@ -52,7 +52,7 @@ module.exports = {
       // In other words, we only put what's in the vendor entry definition in vendor-bundle.js
       minChunks: Infinity,
     }),
-    new webpack.IgnorePlugin(/\/iconv-loader$/)
+    new webpack.IgnorePlugin(/\/iconv-loader$/),
   ],
   module: {
     loaders: [
@@ -84,5 +84,4 @@ module.exports = {
   // (so don't need to @import them explicitly)
   // https://github.com/shakacode/sass-resources-loader
   sassResources: ['./app/assets/styles/app-variables.scss'],
-  // target: 'node',
 };

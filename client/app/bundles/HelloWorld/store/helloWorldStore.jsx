@@ -9,7 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 
 // This provides an example of logging redux actions to the console.
 // You'd want to disable this for production.
-import loggerMiddleware from 'lib/middlewares/loggerMiddleware';
+// import loggerMiddleware from 'lib/middlewares/loggerMiddleware';
 
 import * as reducers from '../reducers';
 
@@ -17,28 +17,27 @@ import * as reducers from '../reducers';
 // Immutable.Map, so we'll wrap immutable objects in a simple object.
 // This is the default state that would be used if nothing is sent
 // from the server.
-let full_name = '';
+const fullName = '';
 export const initialState = {
-  $$person: Immutable.fromJS({ full_name }),
+  $$person: Immutable.fromJS({ fullName }),
   $$activities: Immutable.fromJS([]),
   $$statistics: Immutable.fromJS({ strava_api_time: 0 }),
 };
 
 // This is how we get initial props Rails into redux.
 export default props => {
-  const { person, activities, statistics } = props;
+  const { person, activities = [], statistics = { strava_api_time: 0 } } = props;
 
   // add the rails properties
   const initialStateWithRails = initialState;
   initialStateWithRails.$$person = Immutable.fromJS(person);
-  initialStateWithRails.$$activities = Immutable.fromJS(activities ? activities : []);
-  initialStateWithRails.$$statistics = Immutable.fromJS(statistics ? statistics : { strava_api_time: 0 });
+  initialStateWithRails.$$activities = Immutable.fromJS(activities);
+  initialStateWithRails.$$statistics = Immutable.fromJS(statistics);
 
   // connect reducers to the state atom
   const reducer = combineReducers(reducers.default);
   const composedStore = compose(
     applyMiddleware(thunkMiddleware)
-    // applyMiddleware(thunkMiddleware, loggerMiddleware)
   );
   const storeCreator = composedStore(createStore);
   const store = storeCreator(reducer, initialStateWithRails);

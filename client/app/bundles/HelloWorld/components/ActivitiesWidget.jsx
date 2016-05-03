@@ -27,15 +27,13 @@ export default class ActivitiesWidget extends React.Component {
     const activities = this.props.$$activities.toJS();
     const statistics = this.props.$$statistics.toJS();
     const activityList = [];
-    _.map(activities, activity => {
-      return Object.assign({
-        athlete_name: _.isNil(activity.athlete) ? '' :
-          `${activity.athlete.firstname} ${activity.athlete.lastname}`,
-        distance: (activity.distance > 0 ? this.round(activity.distance / 1000) : 0) + ' km',
-        time: this.round(activity.elapsed_time / 60 / 60) + ' hr',
-        link: `https://www.strava.com/activities/${activity.id}`,
-      }, _.pick(activity, ['max_speed', 'name', 'type']));
-    }).forEach((activity, index) => {
+    _.map(activities, activity => Object.assign({
+      athlete_name: _.isNil(activity.athlete) ? '' :
+        `${activity.athlete.firstname} ${activity.athlete.lastname}`,
+      distance: (activity.distance > 0 ? this.round(activity.distance / 1000) : 0) + ' km',
+      time: this.round(activity.elapsed_time / 60 / 60) + ' hr',
+      link: `https://www.strava.com/activities/${activity.id}`,
+    }, _.pick(activity, ['max_speed', 'name', 'type']))).forEach((activity, index) => {
       activityList.push(<div className="activity" key={index}>
         <h5 className={css.header}>
           - {activity.athlete_name}
@@ -45,7 +43,7 @@ export default class ActivitiesWidget extends React.Component {
     });
 
     return (
-      <div className={ `container ${css.activity}` }>
+      <div className={`container ${css.activity}`}>
         <h3>
           Activities: {activities.length}
         </h3>

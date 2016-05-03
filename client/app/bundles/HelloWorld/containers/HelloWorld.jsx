@@ -18,7 +18,7 @@ const HelloWorld = (props) => {
   const actions = bindActionCreators(helloWorldActionCreators, dispatch);
   const { updateName } = actions;
 
-  const full_name = state.$$person.get('full_name');
+  const fullName = state.$$person.get('fullName');
   const $$activities = state.$$activities;
   const $$statistics = state.$$statistics;
 
@@ -27,7 +27,7 @@ const HelloWorld = (props) => {
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
     <div>
-      <HelloWorldWidget {...{ updateName, full_name }} />
+      <HelloWorldWidget {...{ updateName, fullName }} />
       <ActivitiesWidget {... { $$activities, $$statistics }} />
     </div>
   );

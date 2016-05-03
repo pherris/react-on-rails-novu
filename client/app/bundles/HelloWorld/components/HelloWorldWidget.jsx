@@ -7,7 +7,7 @@ export default class HelloWorldWidget extends React.Component {
     // If you have lots of data or action properties, you should consider grouping them by
     // passing two properties: "data" and "actions".
     updateName: PropTypes.func.isRequired,
-    full_name: PropTypes.string.isRequired,
+    fullName: PropTypes.string.isRequired,
   };
 
   constructor(props, context) {
@@ -21,16 +21,16 @@ export default class HelloWorldWidget extends React.Component {
 
   // React will automatically provide us with the event `e`
   handleChange(e) {
-    const full_name = e.target.value;
-    this.props.updateName(full_name);
+    const fullName = e.target.value;
+    this.props.updateName(fullName);
   }
 
   render() {
-    const { full_name } = this.props;
+    const { fullName } = this.props;
     return (
       <div className="container">
         <h3>
-          My name is {full_name}!
+          My name is {fullName}!
         </h3>
         <hr />
         <form className="form-horizontal">
@@ -39,7 +39,7 @@ export default class HelloWorldWidget extends React.Component {
           </label>
           <input
             type="text"
-            value={full_name}
+            value={fullName}
             onChange={this.handleChange}
           />
         </form>
