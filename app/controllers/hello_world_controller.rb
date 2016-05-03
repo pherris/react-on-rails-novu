@@ -9,7 +9,9 @@ class HelloWorldController < ApplicationController
   def index
     @hello_world_props = { full_name: "Stranger" }
     time = Benchmark.measure do
-      @strava_activities = @client.list_friends_activities
+      @strava_activities = Rails.cache.fetch("HelloWorldController/strava_activities", expires_in: 10.minutes) do
+        @client.list_friends_activities
+      end
     end
 
     @statistics = { strava_api_time: time.real }

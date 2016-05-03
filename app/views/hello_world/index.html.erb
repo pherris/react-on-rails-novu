@@ -1,4 +1,6 @@
 <h1 class="alert alert-info this-works">Client Rendering</h1>
+<% cache(action: 'recent', action_suffix: 'activities') do %>
 <%= react_component("HelloWorldApp",
                      props: { person: @hello_world_props, activities: @strava_activities, statistics: @statistics },
                      prerender: true) %>
+<% end %>
