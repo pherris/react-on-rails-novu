@@ -3,14 +3,11 @@
 
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import css from './scss/Activities.scss';
+import css from './Activities.scss';
 
 // Simple example of a React "dumb" component
 export default class ActivitiesWidget extends React.Component {
   static propTypes = {
-    // If you have lots of data or action properties, you should consider grouping them by
-    // passing two properties: "data" and "actions".
-    // updateName: PropTypes.func.isRequired,
     $$activities: PropTypes.object.isRequired,
     $$statistics: PropTypes.object.isRequired,
   };

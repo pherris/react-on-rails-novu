@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import HelloWorldWidget from '../components/HelloWorldWidget';
-import ActivitiesWidget from '../components/ActivitiesWidget';
+import ActivitiesWidget from '../components/activities/ActivitiesWidget';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
