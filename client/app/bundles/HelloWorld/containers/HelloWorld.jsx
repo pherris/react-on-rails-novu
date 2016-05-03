@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import HelloWorldWidget from '../components/HelloWorldWidget';
 import ActivitiesWidget from '../components/activities/ActivitiesWidget';
+import JumbotronWidget from '../components/welcome/JumbotronWidget';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
@@ -27,6 +28,7 @@ const HelloWorld = (props) => {
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
     <div>
+      <JumbotronWidget {... { $$person: state.$$person }} />
       <HelloWorldWidget {...{ updateName, fullName }} />
       <ActivitiesWidget {... { $$activities, $$statistics }} />
     </div>
