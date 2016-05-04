@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 
 export default class VideoPlayer extends React.Component {
   static propTypes = {
-    autoPlay: PropTypes.boolean,
+    autoPlay: PropTypes.bool,
     videoUrl: PropTypes.string.isRequired,
   };
 
@@ -24,7 +24,8 @@ export default class VideoPlayer extends React.Component {
 
     // TODO, whitelist the props to pass to ReactPlayer
     // TODO, keep copy of state in redux baby! (right now we are not maintaining app state for
-    // this component)
+    // this component), full example here:
+    // https://github.com/CookPete/react-player/blob/master/src/demo/App.js
     return (
       <span onClick={this.play}>
         <ReactPlayer
