@@ -3,7 +3,7 @@
 <head>
   <title>RailsReactTutorial</title>
 
-  <%= env_stylesheet_link_tag(static: 'application_static',
+  <%= env_stylesheet_link_tag(static: ['application_static'],
                               hot: 'application_non_webpack',
                               media: 'all',
                               'data-turbolinks-track' => "reload")  %>
@@ -20,9 +20,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
+<div class="">
+  <nav class="navbar navbar-default navbar-static-top" style="border-color:white;">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="assets/logo-r.svg" style="width: 100px;" alt="Novu"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="#"><%= @hello_world_props[:fullName] %></a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
   <%= yield %>
-</div>
+</div> <!-- /container -->
 
 </body>
 </html>

@@ -14,7 +14,7 @@ function select(state) {
 }
 
 // Simple example of a React "smart" component
-const HelloWorld = (props) => {
+const Welcome = (props) => {
   const { dispatch, state } = props;
   const actions = bindActionCreators(helloWorldActionCreators, dispatch);
   const { updateName } = actions;
@@ -35,7 +35,7 @@ const HelloWorld = (props) => {
   );
 };
 
-HelloWorld.propTypes = {
+Welcome.propTypes = {
   dispatch: PropTypes.func.isRequired,
 
   // This corresponds to the value used in function select above.
@@ -46,6 +46,6 @@ HelloWorld.propTypes = {
 };
 
 // Don't forget to actually use connect!
-// Note that we don't export HelloWorld, but the redux "connected" version of it.
+// Note that we don't export Welcome, but the redux "connected" version of it.
 // See https://github.com/reactjs/react-redux/blob/master/docs/api.md#examples
-export default connect(select)(HelloWorld);
+export default connect(select)(Welcome);

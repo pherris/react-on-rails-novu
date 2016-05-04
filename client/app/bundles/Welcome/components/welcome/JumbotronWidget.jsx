@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import css from './Jumbotron.scss';
+import BankWidget from './BankWidget';
 
 export default class JumbotronWidget extends React.Component {
   static propTypes = {
@@ -23,13 +24,8 @@ export default class JumbotronWidget extends React.Component {
                 Protect your health and pad your wallet. Start your path to better health today.
               </p>
             </div>
-            <div className={`col-sm-4 ${css.bankContainer} ${css.jumbotronBlock}`}>
-              <img src="assets/giftcard.svg" alt="Gift Cards" className={css.bankImage}/>
-              <div className={css.bankContent}>
-                <p>Rewards earned to date:</p>
-                <h2><span>$</span>{rewardsEarned}</h2>
-                <p><a href="btn btn-link">Rewards History</a></p>
-              </div>
+            <div className="col-sm-4">
+              <BankWidget {... { rewardsEarned }} />
             </div>
           </div>
         </div>

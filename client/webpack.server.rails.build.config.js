@@ -19,7 +19,7 @@ module.exports = {
 
     // 'bootstrap-loader',
     // 'babel-polyfill',
-    './app/bundles/HelloWorld/startup/serverRegistration',
+    './app/bundles/Welcome/startup/serverRegistration',
   ],
   output: {
     filename: 'server-bundle.js',
