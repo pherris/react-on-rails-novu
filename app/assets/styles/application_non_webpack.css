@@ -188,30 +188,6 @@ ul.bundle-list {
 }
 
 
-/*
-    ___         _     __
-   /   |  _____(_)___/ /__
-  / /| | / ___/ / __  / _ \
- / ___ |(__  ) / /_/ /  __/
-/_/  |_/____/_/\__,_/\___/
-                           */
-
-
-.aside-column {
-  margin-left: -1px;
-  border-left: 1px solid #58595b;
-}
-.aside-column .aside-block {
-  margin-bottom: 2em;
-}
-.aside-block.first {
-  margin-top: -20px;
-}
-
-.aside-column img {
-  width: 100%;
-  margin-bottom: 1em;
-}
 
 
 

@@ -1,0 +1,17 @@
+.asideColumn {
+  padding-left: 20px;
+  margin-left: -1px;
+  border-left: 1px solid #58595b;
+  .asideBlock {
+    margin-bottom: 2em;
+  }
+}
+.asideBlock.first {
+  margin-top: -20px;
+}
+
+.asideVideo {
+  background: url(./pregnant-image.png);
+  background-size: 340px 200px;
+  margin-bottom: 1em;
+}

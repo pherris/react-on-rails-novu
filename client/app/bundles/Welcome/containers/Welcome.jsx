@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import HelloWorldWidget from '../components/HelloWorldWidget';
 import ActivitiesWidget from '../components/activities/ActivitiesWidget';
+import TwoColumn from './TwoColumn';
 import JumbotronWidget from '../components/welcome/JumbotronWidget';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
 
-function select(state) {
+function mapStateToProps(state) {
   // Which part of the Redux global state does our component want to receive as props?
   // Note the use of `$$` to prefix the property name because the value is of type Immutable.js
   // return { $$helloWorldStore: state.$$helloWorldStore };
@@ -29,6 +30,7 @@ const Welcome = (props) => {
   return (
     <div>
       <JumbotronWidget {... { $$person: state.$$person }} />
+      <TwoColumn />
       <HelloWorldWidget {...{ updateName, fullName }} />
       <ActivitiesWidget {... { $$activities, $$statistics }} />
     </div>
@@ -48,4 +50,4 @@ Welcome.propTypes = {
 // Don't forget to actually use connect!
 // Note that we don't export Welcome, but the redux "connected" version of it.
 // See https://github.com/reactjs/react-redux/blob/master/docs/api.md#examples
-export default connect(select)(Welcome);
+export default connect(mapStateToProps)(Welcome);
