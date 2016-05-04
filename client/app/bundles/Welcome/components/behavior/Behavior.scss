@@ -1,0 +1,54 @@
+ul.bundleList, ul.behaviorList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+ul.bundleList {
+  padding: 15px;
+}
+
+.behaviorListContentSubheader {
+  float:none;
+  padding: 10px 15px;
+  background-color: #C7EAFB;
+  width: 100%;
+  font-size: 14px;
+}
+
+.behaviorListContentSubheader p {
+  margin: 0 0 0 12%;
+}
+
+.behaviorItem, .behaviorItemDisabled {
+  border: 1px solid #808080;
+  list-style: none;
+  margin: 0 0 15px 0;
+  position: relative;
+  .mainImage {
+    width: 10%;
+    float: left;
+    margin: 10px;
+  }
+  .chevron {
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.behaviorItem.disabled {
+  background-color: #F1F2F2;
+}
+
+.behaviorItem.disabled .behaviorListContentSubheader {
+  background-color: #CCCCCC;
+}
+
+.behaviorListContent {
+  margin: 10px 10px 10px 14%;
+  .name, .description {
+    margin: 0 40px 0 0;
+  }
+}

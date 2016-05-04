@@ -17,22 +17,28 @@ import * as reducers from '../reducers';
 // Immutable.Map, so we'll wrap immutable objects in a simple object.
 // This is the default state that would be used if nothing is sent
 // from the server.
-const fullName = '';
 export const initialState = {
-  $$person: Immutable.fromJS({ fullName }),
+  $$person: Immutable.fromJS({ fullName: '' }),
   $$activities: Immutable.fromJS([]),
   $$statistics: Immutable.fromJS({ strava_api_time: 0 }),
+  $$behaviors: Immutable.fromJS([]),
 };
 
 // This is how we get initial props Rails into redux.
 export default props => {
-  const { person, activities = [], statistics = { strava_api_time: 0 } } = props;
+  const {
+    person,
+    activities = [],
+    statistics = { strava_api_time: 0 },
+    behaviors = [],
+  } = props;
 
   // add the rails properties
   const initialStateWithRails = initialState;
   initialStateWithRails.$$person = Immutable.fromJS(person);
   initialStateWithRails.$$activities = Immutable.fromJS(activities);
   initialStateWithRails.$$statistics = Immutable.fromJS(statistics);
+  initialStateWithRails.$$behaviors = Immutable.fromJS(behaviors);
 
   // connect reducers to the state atom
   const reducer = combineReducers(reducers.default);

@@ -1,21 +1,32 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Aside from './aside/Aside';
 import BundleWidget from '../components/behavior/BundleWidget';
 
 export default class TwoColumn extends React.Component {
+  static propTypes = {
+    $$behaviors: PropTypes.array.isRequired,
+  };
+
   render() {
-    const description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ' +
-                        'eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    const behaviors = this.props.$$behaviors.toJS();
+    const behaviorList = [];
+    behaviors.forEach(behavior => {
+      if (behavior.type === 'bundle') {
+        behaviorList.push(<BundleWidget
+          key={behavior.id}
+          type="bundle"
+          header={behavior.header}
+          description={behavior.description}
+          rewards={behavior.rewards}
+          duration={behavior.duration}
+        />);
+      }
+    });
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-8 main-column">
-            <BundleWidget
-              header="Healthy Pregnancy Series"
-              description={description}
-              rewards={['$50 Gift Card', 'Diapers', 'etc.']}
-              duration="Jan 1, 2016 - Dec. 31, 2016"
-            />
+            {behaviorList}
           </div>
 
           <div className="col-sm-4">

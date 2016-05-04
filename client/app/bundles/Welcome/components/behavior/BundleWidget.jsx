@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import css from './Bundle.scss';
+import BehaviorList from './BehaviorListWidget';
 
 export default class BundleWidget extends React.Component {
   static propTypes = {
@@ -42,6 +43,7 @@ export default class BundleWidget extends React.Component {
         <div className={css.bundleSubheader}>
           <p><span>For care:</span> {duration}</p>
         </div>
+        <BehaviorList />
       </div>
     );
   }

@@ -1,5 +1,10 @@
 <% #cache(action: 'recent', action_suffix: 'activities') do %>
 <%= react_component("WelcomeApp",
-                     props: { person: @hello_world_props, activities: @strava_activities, statistics: @statistics },
+                     props: {
+                       person: @hello_world_props,
+                       activities: @strava_activities,
+                       statistics: @statistics,
+                       behaviors: @behaviors
+                     },
                      prerender: false) %>
 <% #end %>

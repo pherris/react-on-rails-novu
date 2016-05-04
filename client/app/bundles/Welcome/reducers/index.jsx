@@ -9,4 +9,5 @@ export default {
   $$person: helloWorldReducer,
   $$activities: activitiesReducer,
   $$statistics: (state = {}) => state,
+  $$behaviors: (state = {}) => state,
 };

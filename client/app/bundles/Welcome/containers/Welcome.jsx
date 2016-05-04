@@ -30,7 +30,7 @@ const Welcome = (props) => {
   return (
     <div>
       <JumbotronWidget {... { $$person: state.$$person }} />
-      <TwoColumn />
+      <TwoColumn {... { $$behaviors: state.$$behaviors }}/>
       <HelloWorldWidget {...{ updateName, fullName }} />
       <ActivitiesWidget {... { $$activities, $$statistics }} />
     </div>
