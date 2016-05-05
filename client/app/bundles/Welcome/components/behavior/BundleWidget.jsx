@@ -8,10 +8,12 @@ export default class BundleWidget extends React.Component {
     description: PropTypes.string.isRequired,
     rewards: PropTypes.array.isRequired,
     duration: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    behaviors: PropTypes.array.isRequired,
   };
 
   render() {
-    const { header, description, rewards, duration } = this.props;
+    const { header, description, rewards, duration, behaviors, category } = this.props;
     const rewardSeperator = <span> + </span>;
     const formattedRewards = [];
 
@@ -32,7 +34,7 @@ export default class BundleWidget extends React.Component {
     return (
       <div className={css.bundleContainer}>
         <div className={css.bundleHeader}>
-          <img src="assets/prenatal.svg" alt="Prenatal" className={css.bundleImage} />
+          <img src={`assets/${category}.svg`} alt={category} className={css.bundleImage} />
           <div className={css.bundleHeaderContent}>
             <h2 className={css.bundleName}>{header}</h2>
             <p className={css.bundleDescription}>{description}</p>
@@ -43,7 +45,9 @@ export default class BundleWidget extends React.Component {
         <div className={css.bundleSubheader}>
           <p><span>For care:</span> {duration}</p>
         </div>
-        <BehaviorList />
+        <div className={css.bundleList}>
+          <BehaviorList {... { behaviors }}/>
+        </div>
       </div>
     );
   }

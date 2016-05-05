@@ -4,9 +4,6 @@ ul.bundleList, ul.behaviorList {
   padding: 0;
   width: 100%;
 }
-ul.bundleList {
-  padding: 15px;
-}
 
 .behaviorListContentSubheader {
   float:none;
@@ -38,11 +35,11 @@ ul.bundleList {
   }
 }
 
-.behaviorItem.disabled {
+.behaviorItem.behaviorItemDisabled {
   background-color: #F1F2F2;
 }
 
-.behaviorItem.disabled .behaviorListContentSubheader {
+.behaviorItem.behaviorItemDisabled .behaviorListContentSubheader {
   background-color: #CCCCCC;
 }
 

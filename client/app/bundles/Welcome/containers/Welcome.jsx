@@ -1,11 +1,15 @@
 import React, { PropTypes } from 'react';
-import HelloWorldWidget from '../components/HelloWorldWidget';
-import ActivitiesWidget from '../components/activities/ActivitiesWidget';
+
+// import HelloWorldWidget from '../components/HelloWorldWidget';
+// import ActivitiesWidget from '../components/activities/ActivitiesWidget';
+
 import TwoColumn from './TwoColumn';
-import JumbotronWidget from '../components/welcome/JumbotronWidget';
+import Jumbotron from '../components/welcome/JumbotronWidget';
+import Footer from '../../../components/footer/FooterWidget';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
+
+// import { bindActionCreators } from 'redux';
+// import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
 
 function mapStateToProps(state) {
   // Which part of the Redux global state does our component want to receive as props?
@@ -16,23 +20,23 @@ function mapStateToProps(state) {
 
 // Simple example of a React "smart" component
 const Welcome = (props) => {
-  const { dispatch, state } = props;
-  const actions = bindActionCreators(helloWorldActionCreators, dispatch);
-  const { updateName } = actions;
+  const { state } = props;
 
-  const fullName = state.$$person.get('fullName');
-  const $$activities = state.$$activities;
-  const $$statistics = state.$$statistics;
+  // const { dispatch, state } = props;
+  // const actions = bindActionCreators(helloWorldActionCreators, dispatch);
+  // const { updateName } = actions;
 
-  // This uses the ES2015 spread operator to pass properties as it is more DRY
-  // This is equivalent to:
-  // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
+  // <HelloWorldWidget {...{ updateName, fullName: state.$$person.get('fullName') }} />
+  // <ActivitiesWidget {... {
+  //   $$activities: state.$$activities, $$statistics: state.$$statistics }} />
+
   return (
     <div>
-      <JumbotronWidget {... { $$person: state.$$person }} />
+      <Jumbotron {... { $$person: state.$$person }} />
       <TwoColumn {... { $$behaviors: state.$$behaviors }}/>
-      <HelloWorldWidget {...{ updateName, fullName }} />
-      <ActivitiesWidget {... { $$activities, $$statistics }} />
+      <div className="container">
+        <Footer />
+      </div>
     </div>
   );
 };

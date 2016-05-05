@@ -1,32 +1,41 @@
 import React, { PropTypes } from 'react';
 import Aside from './aside/Aside';
-import BundleWidget from '../components/behavior/BundleWidget';
+import Bundle from '../components/behavior/BundleWidget';
+import BehaviorList from '../components/behavior/BehaviorListWidget';
 
 export default class TwoColumn extends React.Component {
   static propTypes = {
-    $$behaviors: PropTypes.array.isRequired,
+    $$behaviors: PropTypes.object.isRequired,
   };
 
   render() {
-    const behaviors = this.props.$$behaviors.toJS();
+    const types = this.props.$$behaviors.toJS();
+    const bundleList = [];
     const behaviorList = [];
-    behaviors.forEach(behavior => {
-      if (behavior.type === 'bundle') {
-        behaviorList.push(<BundleWidget
-          key={behavior.id}
+    types.forEach(type => {
+      if (type.type === 'bundle') {
+        bundleList.push(<Bundle
+          key={type.id}
           type="bundle"
-          header={behavior.header}
-          description={behavior.description}
-          rewards={behavior.rewards}
-          duration={behavior.duration}
+          header={type.header}
+          description={type.description}
+          rewards={type.rewards}
+          duration={type.duration}
+          behaviors={type.behaviors}
+          category={type.category}
         />);
+        return;
       }
+
+      behaviorList.push(type);
     });
+
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-8 main-column">
-            {behaviorList}
+            {bundleList}
+            <BehaviorList behaviors={behaviorList} />
           </div>
 
           <div className="col-sm-4">

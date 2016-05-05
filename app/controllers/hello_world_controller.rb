@@ -10,9 +10,9 @@ class HelloWorldController < ApplicationController
   TYPES = {
     PRENATAL: 'prenatal',
     LOCKED: 'locked',
-    FLU_SHOT: 'flu_shot',
+    FLU_SHOT: 'flu-shot',
     DENTAL: 'dental',
-    WELLNESS: 'wellness'
+    WELLNESS: 'annual-wellness'
   }
 
   WORDS = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -36,7 +36,7 @@ class HelloWorldController < ApplicationController
   end
 
   def behaviors
-    [bundle]
+    [bundle, behavior, behavior, behavior, behavior]
   end
 
   def bundle
@@ -48,17 +48,21 @@ class HelloWorldController < ApplicationController
       description: body(20),
       rewards: ['$50 Gift Card', 'Diapers', 'etc.'],
       duration: 'Jan 1, 2016 - Dec. 31, 2016',
-      behaviors: [behavior]
+      behaviors: [behavior, behavior, behavior, behavior],
+      disabled: false
     }
   end
 
   def behavior
+    typeArray = TYPES.to_a
     {
       id: SecureRandom.uuid,
       type: 'behavior',
-      category: TYPES.to_a.sample(1)[0][1], #don't look behind the curtains
+      category: typeArray.sample(1, random: 0..typeArray.length)[0][1], #don't look behind the curtains
       header: header,
-      description: body
+      description: body,
+      duration: 'Jan 1, 2016 - Dec. 31, 2016',
+      disabled: rand(0..1) == 1
     }
   end
 
