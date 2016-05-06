@@ -22,6 +22,7 @@ export const initialState = {
   $$activities: Immutable.fromJS([]),
   $$statistics: Immutable.fromJS({ strava_api_time: 0 }),
   $$behaviors: Immutable.fromJS([]),
+  $$completing: Immutable.fromJS({ behavior: {}, bundle: {} }),
 };
 
 // This is how we get initial props Rails into redux.
@@ -31,6 +32,7 @@ export default props => {
     activities = [],
     statistics = { strava_api_time: 0 },
     behaviors = [],
+    completing = { behavior: {}, bundle: {} },
   } = props;
 
   // add the rails properties
@@ -39,6 +41,7 @@ export default props => {
   initialStateWithRails.$$activities = Immutable.fromJS(activities);
   initialStateWithRails.$$statistics = Immutable.fromJS(statistics);
   initialStateWithRails.$$behaviors = Immutable.fromJS(behaviors);
+  initialStateWithRails.$$completing = Immutable.fromJS(completing);
 
   // connect reducers to the state atom
   const reducer = combineReducers(reducers.default);

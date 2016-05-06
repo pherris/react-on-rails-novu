@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoPlayer from '../../../../components/video/VideoPlayer';
-import css from './Aside.scss';
+import css from '../../../../css/Common.scss';
+import aside from './Aside.scss';
 
 export default class TwoColumn extends React.Component {
   render() {
@@ -24,7 +25,7 @@ export default class TwoColumn extends React.Component {
           <VideoPlayer
             height={200}
             width={340}
-            className={css.asideVideo}
+            className={aside.video}
             videoUrl="https://www.youtube.com/watch?v=ysz5S6PUM-U"
           />
           <p>

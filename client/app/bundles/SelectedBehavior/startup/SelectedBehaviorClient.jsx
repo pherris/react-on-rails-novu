@@ -2,13 +2,14 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import createStore from '../../../store/helloWorldStore';
-import Welcome from '../containers/Welcome';
+import SelectedBehaviorScreen from '../containers/SelectedBehaviorScreen';
 
-export default props => {
+export default (props) => {
   const store = createStore(props);
-  return (
+  const reactComponent = (
     <Provider store={store}>
-      <Welcome />
+      <SelectedBehaviorScreen />
     </Provider>
   );
+  return reactComponent;
 };

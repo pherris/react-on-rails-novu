@@ -1,0 +1,65 @@
+.noPaddingLeft {
+  padding-left: 0;
+}
+.noPaddingRight {
+  padding-right: 0;
+}
+
+.detailHeader {
+  margin-bottom: 1.5em;
+}
+
+.detailHeader img {
+  width: 20%;
+  margin: 0 2%;
+  float: left;
+}
+.detailHeaderContent {
+  margin-left: 24%;
+}
+
+.detail .asideColumn h3 {
+  margin: 0;
+}
+
+.detailAsideHeader {
+  background-color: #c8eafb;
+  width: 100%;
+  padding: 20px;
+  float: left;
+
+  .infoBlock {
+    width: 50%;
+    float: left;
+
+    img {
+      width: 35%;
+      border: 3px solid white;
+      border-radius: 99em;
+      margin-right: 3%;
+      float: left;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    margin-top: .6em;
+
+    span {
+      font-weight: 800;
+    }
+  }
+
+  .rewardAmount {
+    margin-top: 0.5em;
+  }
+}
+
+.detailDescription {
+  padding: 40px 20px 0 20px;
+}
+
+.detailSubDescription {
+  background-color: #cfcfcf;
+  padding: 20px;
+}

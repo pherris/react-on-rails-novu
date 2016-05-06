@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import createStore from '../store/helloWorldStore';
+import createStore from '../../../store/helloWorldStore';
 import Welcome from '../containers/Welcome';
 
 // See documentation for https://github.com/reactjs/react-redux.

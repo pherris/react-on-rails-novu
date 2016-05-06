@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import Aside from './aside/Aside';
 import Bundle from '../components/behavior/BundleWidget';
 import BehaviorList from '../components/behavior/BehaviorListWidget';
+import css from './Welcome.scss';
 
 export default class TwoColumn extends React.Component {
   static propTypes = {
@@ -33,7 +34,7 @@ export default class TwoColumn extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-sm-8 main-column">
+          <div className={`col-sm-8 ${css.mainColumn}`}>
             {bundleList}
             <BehaviorList behaviors={behaviorList} />
           </div>

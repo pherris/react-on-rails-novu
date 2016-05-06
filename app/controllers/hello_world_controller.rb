@@ -29,6 +29,24 @@ class HelloWorldController < ApplicationController
     @behaviors = behaviors
   end
 
+  def detail
+    typeArray = TYPES.to_a
+    reward = rand(10..100).round(-1)
+    @behavior = {
+      id: SecureRandom.uuid,
+      type: 'behavior',
+      category: category,
+      header: header,
+      description: body,
+      about: body(50),
+      whatToExpect: body(40),
+      reward: "$#{reward} Gift Card",
+      duration: 'Jan 1, 2016 - Dec. 31, 2016',
+      disabled: false
+    }
+    @hello_world_props = { fullName: "Stranger", rewardsEarned: 24 }
+  end
+
   private
 
   def configure_strava
@@ -46,7 +64,7 @@ class HelloWorldController < ApplicationController
       category: TYPES[:PRENATAL],
       header: header,
       description: body(20),
-      rewards: ['$50 Gift Card', 'Diapers', 'etc.'],
+      rewards: ["$#{rand(10..100).round(-1)} Gift Card", 'Diapers', 'etc.'],
       duration: 'Jan 1, 2016 - Dec. 31, 2016',
       behaviors: [behavior, behavior, behavior, behavior],
       disabled: false
@@ -54,13 +72,13 @@ class HelloWorldController < ApplicationController
   end
 
   def behavior
-    typeArray = TYPES.to_a
     {
       id: SecureRandom.uuid,
       type: 'behavior',
-      category: typeArray.sample(1, random: 0..typeArray.length)[0][1], #don't look behind the curtains
+      category: category,
       header: header,
       description: body,
+      reward: "$#{rand(10..100).round(-1)} Gift Card",
       duration: 'Jan 1, 2016 - Dec. 31, 2016',
       disabled: rand(0..1) == 1
     }
@@ -72,5 +90,10 @@ class HelloWorldController < ApplicationController
 
   def body(size = 12)
     WORDS.split.sample(size).join(' ').capitalize
+  end
+
+  def category
+    typeArray = TYPES.to_a
+    typeArray.sample(1, random: 0..typeArray.length)[0][1] #don't look behind the curtains
   end
 end

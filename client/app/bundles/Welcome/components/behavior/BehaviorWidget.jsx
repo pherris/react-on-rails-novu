@@ -8,11 +8,11 @@ export default class BehaviorWidget extends React.Component {
     header: PropTypes.string.isRequired,
     duration: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
+    reward: PropTypes.string.isRequired,
   };
   render() {
-    const disabled = this.props.disabled ? 'disabled' : ''; // how to reference disabled from css?
     return (
-      <li className={`${css.behaviorItem} ${disabled ? css.behaviorItemDisabled : ''}`}>
+      <li className={`${css.behaviorItem} ${this.props.disabled ? css.behaviorItemDisabled : ''}`}>
         <img src={`assets/${this.props.category}.svg`}
           alt={this.props.category}
           className={css.mainImage}
@@ -21,6 +21,7 @@ export default class BehaviorWidget extends React.Component {
           <h3 className={css.name}>{this.props.header}</h3>
           <p className={css.description}>{this.props.description}</p>
         </div>
+        <h4 className={css.rewardAmount}>{this.props.reward}</h4>
         <div className={css.behaviorListContentSubheader}>
           <p><span>For care:</span> {this.props.duration}</p>
         </div>

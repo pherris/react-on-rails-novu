@@ -22,6 +22,7 @@ module.exports = {
     // webpack.rails.config
     app: [
       './app/bundles/Welcome/startup/clientRegistration',
+      './app/bundles/SelectedBehavior/startup/clientRegistration',
     ],
   },
   resolve: {

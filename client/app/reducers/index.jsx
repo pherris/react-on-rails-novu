@@ -10,4 +10,5 @@ export default {
   $$activities: activitiesReducer,
   $$statistics: (state = {}) => state,
   $$behaviors: (state = {}) => state,
+  $$completing: (state = {}) => state,
 };

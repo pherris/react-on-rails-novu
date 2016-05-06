@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import css from './Bundle.scss';
 import BehaviorList from './BehaviorListWidget';
+import Reward from '../../../../components/reward/Reward';
 
 export default class BundleWidget extends React.Component {
   static propTypes = {
@@ -17,18 +18,12 @@ export default class BundleWidget extends React.Component {
     const rewardSeperator = <span> + </span>;
     const formattedRewards = [];
 
-    // split apart the reward(s) and format the strings
-    rewards.forEach(reward => {
-      const rewardParts = /([\$])(\d+)(.+)/g.exec(reward);
-      formattedRewards.push([
-        (rewardParts && rewardParts[1]) ?
-          <span className={css.currencySymbol}>{rewardParts[1]}</span> : '',
-        (rewardParts && rewardParts[2]) ?
-          <span className={css.amount}>{rewardParts[2]}</span> : '',
-        (rewardParts && rewardParts[3]) ? <span>{rewardParts[3]}</span> : '',
-        (!rewardParts) ? <span>{reward}</span> : '',
-        rewardSeperator,
-      ]);
+    // split apart the reward(s) and add seperator
+    rewards.forEach((reward, index) => {
+      formattedRewards.push(<Reward text={reward} />);
+      if (index !== rewards.length - 1) {
+        formattedRewards.push(rewardSeperator);
+      }
     });
 
     return (

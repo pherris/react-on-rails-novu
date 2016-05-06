@@ -1,0 +1,20 @@
+.btnPrimary {
+  padding: 8px 40px;
+  background-color: #00AEEF;
+  border: none;
+}
+.noPaddingRight {
+  padding-right: 0px;
+}
+
+.asideColumn {
+  padding-left: 20px;
+  .asideBlock {
+    margin-bottom: 2em;
+    float: left;
+  }
+}
+
+.asideBlock.first {
+  margin-top: -20px;
+}
